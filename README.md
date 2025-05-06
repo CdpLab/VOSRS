@@ -28,7 +28,21 @@ pip install requirements.txt
 ```
 
 ## RUN
-We have provided the chair and lego datasets in the data folder.
+You can download the lego and chair datasets [here](https://drive.google.com/drive/folders/149zKbdQQ_LaVWwIRcdXLqpJpWJyS00RC?usp=sharing).
+You must ensure that the dataset directory structure is as follows:
+```bash
+-data
+ --nerf_synthetic_lego
+  ---images
+   ----r_0.png
+   ----r_1.png
+   ...
+ --nerf_synthetic_chair
+  ---images
+   ----r_0.png
+   ----r_1.png
+   ...
+```
 ### 3D Rendering
 If you want to render the lego dataset:
 ```bash
