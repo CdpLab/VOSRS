@@ -27,39 +27,42 @@ Install other dependencies
 pip install requirements.txt
 ```
 
-## RUN
-You can download the lego and chair datasets [here](https://drive.google.com/drive/folders/149zKbdQQ_LaVWwIRcdXLqpJpWJyS00RC?usp=sharing).
+## Run
+You can download the chair and lego datasets [here](https://drive.google.com/drive/folders/149zKbdQQ_LaVWwIRcdXLqpJpWJyS00RC?usp=sharing).
 You must ensure that the dataset directory structure is as follows:
 ```bash
 -data
- --nerf_synthetic_lego
-  ---images
-   ----r_0.png
-   ----r_1.png
-   ...
- --nerf_synthetic_chair
-  ---images
-   ----r_0.png
-   ----r_1.png
-   ...
+  --nerf_synthetic_chair
+    ---images
+      ----r_0.png
+      ----r_1.png
+      ...
+  --nerf_synthetic_lego
+    ---images
+      ----r_0.png
+      ----r_1.png
+      ...
 ```
 ### 3D Rendering
-If you want to render the lego dataset:
-```bash
-python convert.py -s data/nerf_synthetic_lego
-python gaussian_optimization.py -s data/nerf_synthetic_lego -m data/nerf_synthetic_lego/output
-```
 If you want to render the chair dataset:
 ```bash
 python convert.py -s data/nerf_synthetic_chair
 python gaussian_optimization.py -s data/nerf_synthetic_chair -m data/nerf_synthetic_chair/output
 ```
-### Mesh Extraction
-Extract the mesh from the lego rendering:
+If you want to render the lego dataset:
 ```bash
-python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_lego/output -o data/nerf_synthetic_lego
+python convert.py -s data/nerf_synthetic_lego
+python gaussian_optimization.py -s data/nerf_synthetic_lego -m data/nerf_synthetic_lego/output
 ```
+### Mesh Extraction
 Extract the mesh from the chair rendering:
 ```bash
 python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_chair/output -o data/nerf_synthetic_chair
 ```
+Extract the mesh from the lego rendering:
+```bash
+python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_lego/output -o data/nerf_synthetic_lego
+```
+## Results
+The operation results of each stage are as follows:
+![results](https://github.com/CdpLab/VOSRS/blob/main/assets/results.jpg)
