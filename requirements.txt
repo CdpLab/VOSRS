@@ -1,0 +1,12 @@
+plyfile
+tqdm
+opencv-python
+joblib
+opencv-python-headless
+vdbfusion
+trimesh
+omegaconf
+einops
+kiui
+scipy
+open3d
