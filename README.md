@@ -65,4 +65,4 @@ python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_lego/output -o 
 ```
 ## Results
 The operation results of each stage are as follows:
-![results](https://github.com/CdpLab/VOSRS/blob/main/assets/results.jpg)
+![results](https://github.com/CdpLab/VOSRS/blob/main/assets/result.jpg)
