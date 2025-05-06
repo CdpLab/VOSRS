@@ -8,3 +8,44 @@ With the improvement of three-dimensional (3D) reconstruction technology, virtua
 
 ## <p align="center">THE FRAMEWORK OF VOSRS</p>
 The system starts with a set of multi-view images of the object captured by a camera. We add Gaussian kernel scale constraint loss and mask constraint loss to jointly optimize the 3D Gaussian and use the Gaussian rasterizer to render the 3D object. We perform mesh extraction and smoothing operations on the rendering results to obtain a mesh model of the 3D object. Finally, we perform haptic rendering on the 3D mesh model to obtain the final 3D virtual object that can be used for touch perception by BVI.
+
+![framework](https://github.com/CdpLab/VOSRS/blob/main/assets/framework.jpg)
+
+## Install
+Requires: Linux cuda11.8 python3.10.6
+
+Install diff-gaussian-rasterization
+```bash
+python submodules/diff-gaussian-rasterization/setup.py install
+```
+Install simple-knn
+```bash
+python submodules/simple-knn/setup.py install
+```
+Install other dependencies
+```bash
+pip install requirements.txt
+```
+
+## RUN
+We have provided the chair and lego datasets in the data folder.
+### 3D Rendering
+If you want to render the lego dataset:
+```bash
+python convert.py -s data/nerf_synthetic_lego
+python gaussian_optimization.py -s data/nerf_synthetic_lego -m data/nerf_synthetic_lego/output
+```
+If you want to render the chair dataset:
+```bash
+python convert.py -s data/nerf_synthetic_chair
+python gaussian_optimization.py -s data/nerf_synthetic_chair -m data/nerf_synthetic_chair/output
+```
+### Mesh Extraction
+Extract the mesh from the lego rendering:
+```bash
+python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_lego/output -o data/nerf_synthetic_lego
+```
+Extract the mesh from the chair rendering:
+```bash
+python mesh_extra/scripts/extract_mesh.py -m data/nerf_synthetic_chair/output -o data/nerf_synthetic_chair
+```
